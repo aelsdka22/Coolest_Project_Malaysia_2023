@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en">
+
+<script>
+  let N = parseInt(prompt("Enter array size: "));
+  let myArray = prompt("Enter a list of numbers (without separated by commas): ").split(" ");
+  let target = parseInt(prompt("Enter the target: "));
+  for (let i = 0; i < myArray.length; i++)
+    myArray[i] = parseInt(myArray[i]);
+</script>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <title>Binary Search</title>
+  <link rel="stylesheet" href="nicepage.css" media="screen">
+  <link rel="stylesheet" href="algorithm.css" media="screen">
+  <script class="u-script" type="text/javascript" src="jquery-1.9.1.min.js" defer=""></script>
+  <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+  <meta name="generator" content="Nicepage 5.17.1, nicepage.com">
+  <link id="u-theme-google-font" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+
+  <style>
+    table {
+      width: 80%;
+      margin: 20px;
+    }
+
+    #arrayRow {
+      border-radius: 6px;
+    }
+
+    th,
+    td {
+      border: 2px solid #ddd;
+      padding: 8px;
+      text-align: center;
+      border-radius: 6px;
+      width: 70px;
+    }
+
+
+    tr:first-child td {
+      background-color: #c0c0c0;
+      font-weight: bold;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: border-box;
+    }
+
+    body {}
+
+    #arrow {
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 20px solid #FFA500;
+      position: relative;
+      animation: moveArrow 1s linear infinite alternate;
+      transition-duration: 0.4s;
+      left: 0px;
+    }
+
+    @keyframes moveArrow {
+      0% {
+        transform: translateY(0);
+      }
+
+      100% {
+        transform: translateY(-5px);
+      }
+    }
+  </style>
+
+  <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "WebSite5752755"
+}</script>
+  <meta name="theme-color" content="#f41818">
+  <meta property="og:title" content="Binary Search">
+  <meta property="og:description" content="">
+  <meta property="og:type" content="website">
+  <meta data-intl-tel-input-cdn-path="intlTelInput/">
+</head>
+
+<body class="u-body u-xl-mode" data-lang="en">
+  <header class="u-clearfix u-header u-header" id="sec-0c7a">
+    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+      <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-1" src="images/1.png" alt=""
+        data-image-width="500" data-image-height="500">
+      <p class="u-heading-font u-text u-text-default u-text-1">SSVISUAL.COM</p>
+      <nav class="u-menu u-menu-hamburger u-offcanvas u-menu-1" data-responsive-from="XL">
+        <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px; font-weight: 500;">
+          <a class="u-button-style u-custom-active-color u-custom-border u-custom-border-color u-custom-hover-color u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-text-active-color u-custom-text-color u-custom-text-hover-color u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+            href="#" style="padding: 8px 0px; font-size: calc(1em + 16px);">
+            <svg class="u-svg-link" viewBox="0 0 24 24">
+              <use xlink:href="#menu-hamburger"></use>
+            </svg>
+            <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px"
+              xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+              <g>
+                <rect y="1" width="16" height="2"></rect>
+                <rect y="7" width="16" height="2"></rect>
+                <rect y="13" width="16" height="2"></rect>
+              </g>
+            </svg>
+          </a>
+        </div>
+        <div class="u-custom-menu u-nav-container">
+          <ul class="u-nav u-spacing-2 u-unstyled u-nav-1">
+            <li class="u-nav-item"><a
+                class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
+                href="index.html" style="padding: 10px 20px;">Home</a>
+              <hr>
+            </li>
+            <li class="u-nav-item"><a
+                class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
+                href="linear_search.html" style="padding: 10px 20px;">Linear Search</a>
+              <hr>
+            </li>
+            <li class="u-nav-item"><a
+                class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
+                href="bubble_sort.html" style="padding: 10px 20px;">Bubble Sort</a>
+              <hr>
+            </li>
+            <li class="u-nav-item"><a
+                class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
+                href="insertion_sort.html" style="padding: 10px 20px;">Insertion Sort</a>
+              <hr>
+            </li>
+          </ul>
+        </div>
+        <div class="u-custom-menu u-nav-container-collapse">
+          <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+            <div class="u-inner-container-layout u-sidenav-overflow">
+              <div class="u-menu-close"></div>
+              <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="index.html"
+                    style="padding: 10px 20px;">Home</a>
+                  <hr>
+                </li>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="linear_search.html"
+                    style="padding: 10px 20px;">Linear Search</a>
+                  <hr>
+                </li>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="bubble_sort.html"
+                    style="padding: 10px 20px;">Bubble Sort</a>
+                  <hr>
+                </li>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="insertion_sort.html"
+                    style="padding: 10px 20px;">Insertion Sort</a>
+                  <hr>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+        </div>
+      </nav>
+      <div class="u-absolute-hcenter u-border-5 u-border-palette-1-base u-line u-line-horizontal u-line-1"
+        data-animation-name="customAnimationIn" data-animation-duration="1000"></div>
+    </div>
+  </header>
+  <section class="u-clearfix u-section-1" id="sec-56b6">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <div
+        class="u-border-5 u-border-grey-75 u-container-style u-expanded-width u-group u-radius-15 u-shape-round u-group-1">
+        <div class="u-container-layout u-container-layout-1">
+          <div class="u-container-style u-group u-palette-1-base u-radius-15 u-shape-round u-group-2">
+            <div class="u-container-layout u-valign-middle u-container-layout-2">
+              <h3 class="u-text u-text-default u-text-1">Binary Search</h3>
+            </div>
+          </div>
+          <center>
+            <table id="myTable">
+              <tr></tr>
+              <tr id="arrayRow">
+              </tr>
+            </table>
+          </center>
+          <div id="arrow"></div>
+        </div>
+      </div>
+      <div class="data-layout-selected u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+        <div class="u-layout">
+          <div class="u-layout-row">
+            <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-1">
+              <div class="u-container-layout u-container-layout-3">
+                <h4 class="u-text u-text-default u-text-2">Pseudocode</h4>
+                <div class="u-border-5 u-border-grey-75 u-radius-15 u-shape u-shape-round u-shape-1">
+                  <pre style="font-size: 14px">
+function binary_search(list, target):
+  left = 0
+  right = length(list) - 1
+  WHILE left <= right:
+    mid = (left + right) // 2
+    IF list[mid] == target:
+      RETURN mid
+    ELIF list[mid] < target:
+      left = mid + 1
+    ELSE:
+      right = mid - 1
+    END IF
+  END WHILE
+                </pre>
+                </div>
+              </div>
+            </div>
+            <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-2">
+              <div class="u-container-layout u-container-layout-4">
+                <h4 class="u-text u-text-default u-text-3">Terminal</h4>
+                <div class="u-border-5 u-border-grey-75 u-radius-15 u-shape u-shape-round u-shape-2">
+                  <p id="left">Left Index: </p>
+                  <p id="right">Right Index: </p>
+                  <p id="midvalue">Middle Index: </p>
+                  <p id="concept"></p>
+                </div>
+                <div class="u-palette-1-base u-radius-15 u-shape u-shape-round u-shape-3" style="height: 58%">
+                  <h1 id="tgt" style="text-align: center"></h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h3 class="u-text u-text-default u-text-4">TARGET</h3>
+    </div>
+  </section>
+
+
+
+  <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-c51f">
+    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+      <p class="u-custom-font u-heading-font u-small-text u-text u-text-variant u-text-1">SSVISUAL.COM<span
+          style="font-weight: 700;"></span>
+      </p>
+    </div>
+  </footer>
+
+</body>
+
+<script>
+  // let N = parseInt(prompt("Enter array size: "));
+  // let myArray = parseInprompt("Enter a list of numbers (without separated by commas): ").split(" ");
+  // let res=myArray.reduce((acc,e) => +e + acc,0);
+  // const myArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  // let myArray = prompt("Enter a list of numbers (without separated by commas): ").split(" ");
+  // let target = parseInt(prompt("Enter the target: "));
+  // for (let i = 0; i < myArray.length; i++) 
+  //   myArray[i] = parseInt(myArray[i]);
+  const arrayRow = document.getElementById('arrayRow');
+  for (let i = 0; i < myArray.length; i++) {
+    const cell = document.createElement("td");
+    cell.setAttribute("id", "i" + i);
+    cell.textContent = myArray[i];
+    arrayRow.appendChild(cell);
+  }
+</script>
+
+
+<script>
+  // let target = 6;
+  let found = false;
+  let low = 0, high = myArray.length - 1, count = 0.5, mid = 0;
+  const arrow = document.getElementById('arrow');
+
+  function pointToMid(curr_left, current_mid, curr_right) {
+    setTimeout(function () {
+      let size = document.querySelector("#i" + current_mid).getBoundingClientRect().right - document.querySelector("#i" + current_mid).getBoundingClientRect().left;
+      arrow.style.left = document.querySelector("#i" + current_mid).getBoundingClientRect().left - 129 + 'px';
+      document.getElementById("left").innerHTML = "Left Index: " + curr_left;
+      document.getElementById("right").innerHTML = "Right Index: " + curr_right;
+      document.getElementById("midvalue").innerHTML = "Middle Index: " + current_mid + ", Middle Value: " + myArray[current_mid];
+      if (target > myArray[current_mid])
+        document.getElementById("concept").innerHTML = "Target value > middle value. We can eliminate all elements from left to middle since they are less than target.";
+      if (target < myArray[current_mid])
+        document.getElementById("concept").innerHTML = "Middle value > target value. We can eliminate all elements from middle to right since they are greater than target.";
+    }, count * 3000);
+  }
+  function fadeIt(lb, hb, current_mid) {
+    for (let i = lb; i <= hb; i++) {
+      const elem = document.querySelector("#i" + i);
+      const rect = elem.getBoundingClientRect();
+      setTimeout(function () {
+        // arrow.style.left = rect.left + 20 + 'px';
+        document.getElementById("i" + i).style.border = "2px solid #FFA500";
+        document.getElementById("i" + i).style.backgroundColor = "#AEADAD";
+        document.getElementById("i" + i).style.opacity = 1;
+        document.getElementById("i" + i).style.border = "2px solid red";
+        for (let j = 0; j < 30; j++) {
+          setTimeout(function () {
+            document.getElementById("i" + i).style.opacity -= 0.02;
+          }, j * 50);
+        }
+      }, (count) * 3000);
+    }
+  };
+
+  while (low <= high) {
+    mid = Math.floor((low + high) / 2);
+    let value = myArray[mid]; // mid value
+    // document.write(mid + 1, ' ');
+    pointToMid(low, mid, high);
+    count++;
+    if (target === value) {
+      setTimeout(function () {
+        const elem = document.querySelector("#i" + mid);
+        const rect = elem.getBoundingClientRect();
+        document.getElementById("i" + mid).style.backgroundColor = "#39FF14";
+        document.getElementById("i" + mid).style.opacity = 1;
+        document.getElementById("concept").innerHTML = "The current middle value is equal to target; The target is found!";
+      }, (count) * 3000);
+      break;
+    } else if (target > value) {
+      fadeIt(low, mid, mid);
+      low = mid + 1;
+    } else if (target < value) {
+      fadeIt(mid, high, mid);
+      high = mid - 1;
+    }
+  }
+</script>
+
+<script>
+  // let count2 = 0.5;
+  // while (count2 != count) {
+  //   count2++;
+  //   setTimeout(function() {
+  //     var values1 = document.getElementById("values1");
+  //     values.innerHtml = "left: " + left + "; right: " + right;
+  //   }, count2 * 1500)
+  // }
+</script>
+
+<script>
+  window.onload = function () {
+    document.getElementById('tgt').innerHTML = target;
+  };
+</script>
+
+</html>

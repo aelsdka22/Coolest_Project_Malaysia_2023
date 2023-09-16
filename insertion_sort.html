@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en">
+
+<script>
+  let N = parseInt(prompt("Enter array size: "));
+  let myArray = prompt("Enter a list of numbers (without separated by commas): ").split(" ");
+  // 1 7 2 4 8 9 5 3 6
+  for (let i = 0; i < myArray.length; i++)
+    myArray[i] = parseInt(myArray[i]);
+</script>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <title>Insertion Sort</title>
+  <link rel="stylesheet" href="nicepage.css" media="screen">
+  <link rel="stylesheet" href="algorithm.css" media="screen">
+  <script class="u-script" type="text/javascript" src="jquery-1.9.1.min.js" defer=""></script>
+  <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+  <meta name="generator" content="Nicepage 5.17.1, nicepage.com">
+
+  <style>
+    table {
+      width: 80%;
+      margin: 20px;
+    }
+
+    #arrayRow {
+      border-radius: 6px;
+    }
+
+    th,
+    td {
+      border: 2px solid #ddd;
+      padding: 8px;
+      text-align: center;
+      border-radius: 6px;
+      width: 70px;
+      transition: background-color 0.5s, transform 0.5s;
+    }
+
+
+    tr:first-child td {
+      background-color: #c0c0c0;
+      font-weight: bold;
+    }
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: border-box;
+    }
+
+    body {}
+
+    #arrow1,
+    #arrow2 {
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 20px solid #FFA500;
+      position: absolute;
+      animation: moveArrow 1s linear infinite alternate;
+      transition-duration: 0.4s;
+      /* left: 10px; */
+    }
+
+    @keyframes moveArrow {
+      0% {
+        transform: translateY(0);
+      }
+
+      100% {
+        transform: translateY(-5px);
+      }
+    }
+
+    .enlarge {
+      background-color: "yellow";
+      color: red;
+      transform: scale(1.15);
+    }
+  </style>
+
+  <link id="u-theme-google-font" rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+
+
+
+  <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "WebSite5752755"
+}</script>
+  <meta name="theme-color" content="#f41818">
+  <meta property="og:title" content="Linear Search">
+  <meta property="og:description" content="">
+  <meta property="og:type" content="website">
+  <meta data-intl-tel-input-cdn-path="intlTelInput/">
+</head>
+
+<body class="u-body u-xl-mode" data-lang="en">
+  <header class="u-clearfix u-header u-header" id="sec-0c7a">
+    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+      <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-1" src="images/1.png" alt=""
+        data-image-width="500" data-image-height="500">
+      <p class="u-heading-font u-text u-text-default u-text-1">SSVISUAL.COM</p>
+      <nav class="u-menu u-menu-hamburger u-offcanvas u-menu-1" data-responsive-from="XL">
+        <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px; font-weight: 500;">
+          <a class="u-button-style u-custom-active-color u-custom-border u-custom-border-color u-custom-hover-color u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-text-active-color u-custom-text-color u-custom-text-hover-color u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base"
+            href="#" style="padding: 8px 0px; font-size: calc(1em + 16px);">
+            <svg class="u-svg-link" viewBox="0 0 24 24">
+              <use xlink:href="#menu-hamburger"></use>
+            </svg>
+            <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px"
+              xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+              <g>
+                <rect y="1" width="16" height="2"></rect>
+                <rect y="7" width="16" height="2"></rect>
+                <rect y="13" width="16" height="2"></rect>
+              </g>
+            </svg>
+          </a>
+        </div>
+        <div class="u-custom-menu u-nav-container">
+          <ul class="u-nav u-spacing-2 u-unstyled u-nav-1">
+            <li class="u-nav-item"><a
+                class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
+                href="index.html" style="padding: 10px 20px;">Home</a>
+              <hr>
+            </li>
+            <li class="u-nav-item"><a
+                class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
+                href="linear_search.html" style="padding: 10px 20px;">Linear Search</a>
+              <hr>
+            </li>
+            <li class="u-nav-item"><a
+                class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
+                href="binary_search.html" style="padding: 10px 20px;">Binary Search</a>
+              <hr>
+            </li>
+            <li class="u-nav-item"><a
+                class="u-active-grey-5 u-button-style u-hover-grey-10 u-nav-link u-text-active-grey-90 u-text-grey-90 u-text-hover-grey-90"
+                href="bubble_sort.html" style="padding: 10px 20px;">Bubble Sort</a>
+              <hr>
+            </li>
+          </ul>
+        </div>
+        <div class="u-custom-menu u-nav-container-collapse">
+          <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+            <div class="u-inner-container-layout u-sidenav-overflow">
+              <div class="u-menu-close"></div>
+              <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="index.html"
+                    style="padding: 10px 20px;">Home</a>
+                  <hr>
+                </li>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="linear_search.html"
+                    style="padding: 10px 20px;">Linear Search</a>
+                  <hr>
+                </li>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="binary_search.html"
+                    style="padding: 10px 20px;">Binary Search</a>
+                  <hr>
+                </li>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link" href="bubble_sort.html"
+                    style="padding: 10px 20px;">Bubble Sort</a>
+                  <hr>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+        </div>
+      </nav>
+      <div class="u-absolute-hcenter u-border-5 u-border-palette-1-base u-line u-line-horizontal u-line-1"
+        data-animation-name="customAnimationIn" data-animation-duration="1000"></div>
+    </div>
+  </header>
+  <section class="u-clearfix u-section-1" id="sec-56b6">
+    <div class="u-clearfix u-sheet u-sheet-1">
+      <div
+        class="u-border-5 u-border-grey-75 u-container-style u-expanded-width u-group u-radius-15 u-shape-round visualBox u-group-1">
+        <div class="u-container-layout u-container-layout-1">
+          <div class="u-container-style u-group u-palette-1-base u-radius-15 u-shape-round u-group-2">
+            <div class="u-container-layout u-valign-middle u-container-layout-2">
+              <h3 class="u-text u-text-default u-text-1">Insertion Sort</h3>
+            </div>
+          </div>
+          <center>
+            <table id="myTable">
+              <tr></tr>
+              <tr id="arrayRow">
+              </tr>
+            </table>
+          </center>
+          <div id="arrow1"></div>
+          <div id="arrow2"></div>
+
+        </div>
+        <button id="copyButton">COPY!</button>
+        <div id="output"></div>
+        <script src="copyButton.js"></script>
+      </div>
+      <div class="data-layout-selected u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+        <div class="u-layout">
+          <div class="u-layout-row">
+            <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-1">
+              <div class="u-container-layout u-container-layout-3">
+                <h4 class="u-text u-text-default u-text-2">Pseudocode</h4>
+                <div class="pseudocode u-border-5 u-border-grey-75 u-radius-15 u-shape u-shape-round u-shape-1">
+                  <pre>
+function insertion_sort(list):
+  FOR (i=0; i < list.length; i +=1) DO
+    FOR (j=i; j > 0; j -=1) DO
+      k = j - 1
+      IF list[j] < list[k] THEN
+        swap(list[j], list[k])
+      END IF
+    END FOR
+  END FOR
+                  </pre>
+                </div>
+              </div>
+            </div>
+            <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-2">
+              <div class="u-container-layout u-container-layout-4">
+                <h4 class="u-text u-text-default u-text-3">Terminal</h4>
+                <div class="Terminal u-border-5 u-border-grey-75 u-radius-15 u-shape u-shape-round u-shape-2">
+                  <p id="value1">Value 1: </p>
+                  <p id="value2">Value 2: </p>
+                  <p id="concept"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-c51f">
+    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+      <p class="u-custom-font u-heading-font u-small-text u-text u-text-variant u-text-1">SSVISUAL.COM<span
+          style="font-weight: 700;"></span>
+      </p>
+    </div>
+  </footer>
+
+</body>
+
+<script>
+  // let N = parseInt(prompt("Enter array size: "));
+  // let myArray = prompt("Enter a list of numbers (without separated by commas): ").split(" ");
+  // for (let i = 0; i < myArray.length; i++) 
+  //   myArray[i] = parseInt(myArray[i]);
+  // // 1 7 2 4 8 9 5 3 6
+  // const myArray = [1, 7, 2, 4, 8, 9, 5, 3, 6];
+  const arrayRow = document.getElementById('arrayRow');
+  for (let i = 0; i < myArray.length; i++) {
+    const cell = document.createElement("td");
+    cell.setAttribute("id", "i" + i);
+    cell.textContent = myArray[i];
+    arrayRow.appendChild(cell);
+  }
+</script>
+</center>
+</body>
+<div id="arrow1"></div>
+<div id="arrow2"></div>
+<script>
+  let count = 0, count2 = 0;
+  const arrow1 = document.getElementById('arrow1');
+  const arrow2 = document.getElementById('arrow2');
+
+  for (let i = 1; i < myArray.length; i++) {
+    let bigger = false;
+    for (let j = i; j > 0 && !bigger; j--) {
+      let k = j - 1;
+      count++;
+      setTimeout(function () {
+        count2++;
+        const getJ = document.getElementById("i" + j);
+        const getK = document.getElementById("i" + k);
+
+        arrow1.style.left = document.querySelector("#i" + j).getBoundingClientRect().left - 115 + 'px';
+        arrow2.style.left = document.querySelector("#i" + k).getBoundingClientRect().left - 115 + 'px';
+
+        getJ.style.backgroundColor = "yellow";
+        getK.style.backgroundColor = "yellow";
+
+        document.getElementById("value1").innerHTML = "Value 1: " + myArray[k];
+        document.getElementById("value2").innerHTML = "Value 2: " + myArray[j];
+
+        if (myArray[j] < myArray[k]) {
+          document.getElementById("concept").innerHTML = "Since Value 1 > Value 2, we swap them, so the smaller moves to the front.";
+          setTimeout(function () {
+            getJ.classList.add("enlarge");
+            getK.classList.add("enlarge");
+            console.log(myArray[j], count2);
+            setTimeout(function () {
+              const temp = myArray[j];
+              myArray[j] = myArray[k];
+              myArray[k] = temp;
+              getJ.innerText = myArray[j];
+              getK.innerText = myArray[k];
+              getJ.classList.remove("enlarge");
+              getK.classList.remove("enlarge");
+            }, count2 * 20 + 120);
+          }, count2 * 20 + 20);
+        } else {
+          document.getElementById("concept").innerHTML = "Since Value 1 < Value 2, we need not swap them.";
+          bigger = true;
+        }
+
+        setTimeout(function () {
+          document.getElementById("i" + j).style.backgroundColor = "white";
+          document.getElementById("i" + k).style.backgroundColor = "white";
+        }, count2 * 20 + 400);
+      }, (count) * 2000);
+    }
+  }
+
+</script>
+
+</html>
