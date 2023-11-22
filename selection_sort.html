@@ -77,6 +77,12 @@
         transform: translateY(-5px);
       }
     }
+
+    .enlarge {
+      background-color: "yellow";
+      color: red;
+      transform: scale(1.15);
+    }
   </style>
 
   <script type="application/ld+json">{
@@ -176,7 +182,7 @@
         <div class="u-container-layout u-container-layout-1">
           <div class="u-container-style u-group u-palette-1-base u-radius-15 u-shape-round u-group-2">
             <div class="u-container-layout u-valign-middle u-container-layout-2">
-              <h3 class="u-text u-text-default u-text-1">Binary Search</h3>
+              <h3 class="u-text u-text-default u-text-1">Selection Sort</h3>
             </div>
           </div>
           <center>
@@ -280,52 +286,58 @@ function binary_search(list, target):
   const pause = 100;
 
   for (let i = 0; i < myArray.length; i++) {
+    let prev = i;
     setTimeout(function() {
+      let prev = i;
       document.getElementById("i" + i).style.border = "2px solid #D1D0CD";
       arrow.style.left = document.querySelector("#i" + i).getBoundingClientRect().left - 15 * myArray.length + 'px';
       // document.getElementById("i" + i).style.opacity = 1;
       document.getElementById("i" + i).style.backgroundColor = "#FBC03B";
     }, (i) * 5000);
 
-    let prev = i;
 
     for (let j = i+1; j < myArray.length; j++) {
       setTimeout(function() {
         arrow.style.left = document.querySelector("#i" + j).getBoundingClientRect().left - 150 + 'px';
+      }, (i+1) * 5000 - 4800 + (j+1) * 200 + j * 400);
+      setTimeout(function() {
         if (myArray[j] < myArray[prev]) {
           document.getElementById("i" + j).style.backgroundColor = "#84F37A";
+          if (prev != i) {
+            document.getElementById("i" + prev).style.backgroundColor = "white";
+          }
+          prev = j;
         }
-        if (prev != i) {
-          document.getElementById("i" + prev).style.backgroundColor = "white";
-        }
-        prev = j;
-      }, (i+1) * 5000 - 4800 + (j+1) * 400);
+      }, (i+1) * 5000 - 4800 + (j+1) * 400 + j * 200);
     }
 
-    if (prev != i) {
-      setTimeout(function() {
+    setTimeout(function() {
+      if (prev != i) {
+        let j = i;
+        let k = prev;
         const getJ = document.getElementById("i" + i);
         const getK = document.getElementById("i" + prev);
+        getJ.classList.add("enlarge");
+        getK.classList.add("enlarge");
         setTimeout(function () {
-            getJ.classList.add("enlarge");
-            getK.classList.add("enlarge");
-            console.log(myArray[j], count2);
-            setTimeout(function () {
-              const temp = myArray[j];
-              myArray[j] = myArray[k];
-              myArray[k] = temp;
-              getJ.innerText = myArray[j];
-              getK.innerText = myArray[k];
-              getJ.classList.remove("enlarge");
-              getK.classList.remove("enlarge");
-            }, (i+1) * 5000 - 200);
-          }, (i+1) * 5000 - 350);
-      }, (i+1) * 5000 - 500);
-    }
+          console.log(prev);
+            const temp = myArray[i];
+            myArray[i] = myArray[prev];
+            myArray[prev] = temp;
+            getJ.innerText = myArray[i];
+            getK.innerText = myArray[prev];
+            getJ.classList.remove("enlarge");
+            getK.classList.remove("enlarge");
+          }, 300);
+      }
+    }, (i+1) * 5000 - 500);
+    
 
     setTimeout(function() {
       document.getElementById("i" + i).style.border = "2px solid #D1D0CD";
       document.getElementById("i" + i).style.backgroundColor = "white";
+      document.getElementById("i" + prev).style.border = "2px solid #D1D0CD";
+      document.getElementById("i" + prev).style.backgroundColor = "white";      
     }, (i+1) * 5000-200);
     
   }
