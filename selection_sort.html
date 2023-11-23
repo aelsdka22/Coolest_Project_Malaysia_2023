@@ -91,7 +91,7 @@
 		"name": "WebSite5752755"
 }</script>
   <meta name="theme-color" content="#f41818">
-  <meta property="og:title" content="Binary Search">
+  <meta property="og:title" content="Selection Sort">
   <meta property="og:description" content="">
   <meta property="og:type" content="website">
   <meta data-intl-tel-input-cdn-path="intlTelInput/">
@@ -203,19 +203,22 @@
                 <h4 class="u-text u-text-default u-text-2">Pseudocode</h4>
                 <div class="u-border-5 u-border-grey-75 u-radius-15 u-shape u-shape-round u-shape-1">
                   <pre style="font-size: 14px">
-function binary_search(list, target):
-  left = 0
-  right = length(list) - 1
-  WHILE left <= right:
-    mid = (left + right) // 2
-    IF list[mid] == target:
-      RETURN mid
-    ELIF list[mid] < target:
-      left = mid + 1
-    ELSE:
-      right = mid - 1
-    END IF
-  END WHILE
+function selection_sort(list):
+     for i = 1 to n - 1
+      min = i    
+  
+      for j = i+1 to n 
+         if list[j] < list[min] then
+            min = j;
+         end if
+      end for
+
+      if indexMin != i  then
+         swap list[min] and list[i]
+      end if
+   end for
+  
+end procedure
                 </pre>
                 </div>
               </div>
@@ -229,15 +232,15 @@ function binary_search(list, target):
                   <p id="midvalue">Middle Index: </p>
                   <p id="concept"></p>
                 </div>
-                <div class="u-palette-1-base u-radius-15 u-shape u-shape-round u-shape-3" style="height: 58%">
-                  <h1 id="tgt" style="text-align: center"></h1>
+                <!-- <div class="u-palette-1-base u-radius-15 u-shape u-shape-round u-shape-3" style="height: 58%"> -->
+                  <!-- <h1 id="tgt" style="text-align: center"></h1> -->
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <h3 class="u-text u-text-default u-text-4">TARGET</h3>
+      <!-- <h3 class="u-text u-text-default u-text-4">TARGET</h3> -->
     </div>
   </section>
 
