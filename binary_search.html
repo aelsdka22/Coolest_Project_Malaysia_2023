@@ -62,7 +62,7 @@
       border-left: 10px solid transparent;
       border-right: 10px solid transparent;
       border-bottom: 20px solid #FFA500;
-      position: relative;
+      position: sticky;
       animation: moveArrow 1s linear infinite alternate;
       transition-duration: 0.4s;
       left: 0px;
@@ -283,7 +283,7 @@ function binary_search(list, target):
   function pointToMid(curr_left, current_mid, curr_right) {
     setTimeout(function () {
       let size = document.querySelector("#i" + current_mid).getBoundingClientRect().right - document.querySelector("#i" + current_mid).getBoundingClientRect().left;
-      arrow.style.left = document.querySelector("#i" + current_mid).getBoundingClientRect().left - 129 + 'px';
+      arrow.style.left = ((document.querySelector("#i" + current_mid).getBoundingClientRect().left + document.querySelector("#i" + current_mid).getBoundingClientRect().right) / 2) + 'px';
       document.getElementById("left").innerHTML = "Left Index: " + curr_left;
       document.getElementById("right").innerHTML = "Right Index: " + curr_right;
       document.getElementById("midvalue").innerHTML = "Middle Index: " + current_mid + ", Middle Value: " + myArray[current_mid];
