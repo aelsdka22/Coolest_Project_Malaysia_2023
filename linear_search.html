@@ -61,7 +61,7 @@
       border-left: 10px solid transparent;
       border-right: 10px solid transparent;
       border-bottom: 20px solid #FFA500;
-      position: relative;
+      position: sticky;
       animation: moveArrow 1s linear infinite alternate;
       transition-duration: 0.4s;
       /* left: 10px; */
@@ -290,7 +290,7 @@ function linear_search(list,target):
     }
     if (myArray[i] === target) {
       found = true;
-      const elem = document.querySelector("#i" + i);
+      // const elem = document.querySelector("#i" + i);
       const rect = elem.getBoundingClientRect();
       setTimeout(function () {
         const arrow = document.getElementById('arrow');
@@ -309,7 +309,7 @@ function linear_search(list,target):
       const rect = elem.getBoundingClientRect();
       setTimeout(function () {
         const arrow = document.getElementById('arrow');
-        arrow.style.left = rect.left - 139 + 'px';
+      arrow.style.left = ((document.querySelector("#i" + i).getBoundingClientRect().left + document.querySelector("#i" + i).getBoundingClientRect().right) / 2) + 'px';
 
         document.getElementById("index").innerHTML = "Current Index: " + i;
         document.getElementById("value").innerHTML = "Current Value: " + myArray[i];
