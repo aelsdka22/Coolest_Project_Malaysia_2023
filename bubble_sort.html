@@ -62,7 +62,7 @@
       border-left: 10px solid transparent;
       border-right: 10px solid transparent;
       border-bottom: 20px solid #FFA500;
-      position: absolute;
+      position: sticky;
       animation: moveArrow 1s linear infinite alternate;
       transition-duration: 0.4s;
       /* left: 10px; */
@@ -295,8 +295,8 @@ END FOR
         const getJ = document.getElementById("i" + j);
         const getK = document.getElementById("i" + k);
 
-        arrow1.style.left = document.querySelector("#i" + j).getBoundingClientRect().left - 115 + 'px';
-        arrow2.style.left = document.querySelector("#i" + k).getBoundingClientRect().left - 115 + 'px';
+      arrow.style.left = ((document.querySelector("#i" + j).getBoundingClientRect().left + document.querySelector("#i" + j).getBoundingClientRect().right) / 2) + 'px';
+      arrow.style.left = ((document.querySelector("#i" + k).getBoundingClientRect().left + document.querySelector("#i" + k).getBoundingClientRect().right) / 2) + 'px';
 
         getJ.style.backgroundColor = "yellow";
         getK.style.backgroundColor = "yellow";
