@@ -294,7 +294,7 @@ function linear_search(list,target):
       const rect = elem.getBoundingClientRect();
       setTimeout(function () {
         const arrow = document.getElementById('arrow');
-        arrow.style.left = rect.left - 139 + 'px';
+      	arrow.style.left = ((document.querySelector("#i" + i).getBoundingClientRect().left + document.querySelector("#i" + i).getBoundingClientRect().right) / 2) + 'px';
 
         document.getElementById("index").innerHTML = "Current Index: " + i;
         document.getElementById("value").innerHTML = "Current Value: " + myArray[i];
@@ -309,7 +309,7 @@ function linear_search(list,target):
       const rect = elem.getBoundingClientRect();
       setTimeout(function () {
         const arrow = document.getElementById('arrow');
-      arrow.style.left = ((document.querySelector("#i" + i).getBoundingClientRect().left + document.querySelector("#i" + i).getBoundingClientRect().right) / 2) + 'px';
+      	arrow.style.left = ((document.querySelector("#i" + i).getBoundingClientRect().left + document.querySelector("#i" + i).getBoundingClientRect().right) / 2) + 'px';
 
         document.getElementById("index").innerHTML = "Current Index: " + i;
         document.getElementById("value").innerHTML = "Current Value: " + myArray[i];
