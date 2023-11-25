@@ -333,6 +333,14 @@ function insertion_sort(list):
         }, count2 * 20 + 400);
       }, (count) * N*400);
     }
+    if (i == myArray.length - 1) {
+      setTimeout(function() {
+        for (let j = 0; j < myArray.length; j++) {
+        document.getElementById("i" + j).style.backgroundColor = "#b0f781";
+        }
+      }, count * N * 400 + 1500);
+    }
+
   }
 
 </script>
