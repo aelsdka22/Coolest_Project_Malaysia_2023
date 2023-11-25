@@ -314,7 +314,7 @@ END procedure
     for (let j = i+1; j < myArray.length; j++) {
       setTimeout(function() {
         arrow.style.left = ((document.querySelector("#i" + j).getBoundingClientRect().left + document.querySelector("#i" + j).getBoundingClientRect().right - 1) / 2) + 'px';
-      }, (i+1) * N*750 - N*500 + (j+1) * 200 + j * 400);
+      }, (i+1) * N*750 - N*700 + (j+1) * 200 + j * 400);
       setTimeout(function() {
         if (myArray[j] < myArray[prev]) {
           document.getElementById("minval").innerHTML = "Current Min Value: " + myArray[j];
@@ -324,7 +324,7 @@ END procedure
           }
           prev = j;
         }
-      }, (i+1) * N*750 - N*500 + (j+1) * 400 + j * 200);
+      }, (i+1) * N*750 - N*700 + (j+1) * 400 + j * 200);
     }
 
     setTimeout(function() {
