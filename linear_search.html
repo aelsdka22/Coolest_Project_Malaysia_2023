@@ -292,9 +292,11 @@ function linear_search(list,target):
       found = true;
       const elem = document.querySelector("#i" + i);
       const rect = elem.getBoundingClientRect();
+      setTimeout(function() {
+      	arrow.style.left = ((document.querySelector("#i" + i).getBoundingClientRect().left + document.querySelector("#i" + i).getBoundingClientRect().right) / 2) + 'px';
+      }, (i+1) * 2300 - 2000);
       setTimeout(function () {
         const arrow = document.getElementById('arrow');
-      	arrow.style.left = ((document.querySelector("#i" + i).getBoundingClientRect().left + document.querySelector("#i" + i).getBoundingClientRect().right) / 2) + 'px';
 
         document.getElementById("index").innerHTML = "Current Index: " + i;
         document.getElementById("value").innerHTML = "Current Value: " + myArray[i];
