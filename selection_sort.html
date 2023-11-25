@@ -239,7 +239,7 @@ END procedure
                   <p id = "minval">Current Min Value: </p>
                   <p id="concept"></p>
                   <p></p>
-                  <p>Green indicates the current minimum value.</p>
+                  <p>Cyan indicates the current minimum value.</p>
                   <p>Yellow indicates the current index.</p>
                 </div>
                 <!-- <div class="u-palette-1-base u-radius-15 u-shape u-shape-round u-shape-3" style="height: 58%"> -->
@@ -308,23 +308,23 @@ END procedure
       arrow.style.left = ((document.querySelector("#i" + i).getBoundingClientRect().left + document.querySelector("#i" + i).getBoundingClientRect().right - 1) / 2) + 'px';
       // document.getElementById("i" + i).style.opacity = 1;
       document.getElementById("i" + i).style.backgroundColor = "#FBC03B";
-    }, (i) * 5000);
+    }, (i) * N*750);
 
 
     for (let j = i+1; j < myArray.length; j++) {
       setTimeout(function() {
         arrow.style.left = ((document.querySelector("#i" + j).getBoundingClientRect().left + document.querySelector("#i" + j).getBoundingClientRect().right - 1) / 2) + 'px';
-      }, (i+1) * 5000 - 4800 + (j+1) * 200 + j * 400);
+      }, (i+1) * N*750 - N*650 + (j+1) * 200 + j * 400);
       setTimeout(function() {
         if (myArray[j] < myArray[prev]) {
           document.getElementById("minval").innerHTML = "Current Min Value: " + myArray[j];
-          document.getElementById("i" + j).style.backgroundColor = "#84F37A";
+          document.getElementById("i" + j).style.backgroundColor = "#78f6fa";
           if (prev != i) {
             document.getElementById("i" + prev).style.backgroundColor = "white";
           }
           prev = j;
         }
-      }, (i+1) * 5000 - 4800 + (j+1) * 400 + j * 200);
+      }, (i+1) * N*750 - N*650 + (j+1) * 400 + j * 200);
     }
 
     setTimeout(function() {
@@ -346,15 +346,17 @@ END procedure
             getK.classList.remove("enlarge");
           }, 300);
       }
-    }, (i+1) * 5000 - 500);
+    }, (i+1) * N*750 - 500);
     
 
     setTimeout(function() {
       document.getElementById("i" + i).style.border = "2px solid #D1D0CD";
-      document.getElementById("i" + i).style.backgroundColor = "white";
-      document.getElementById("i" + prev).style.border = "2px solid #D1D0CD";
-      document.getElementById("i" + prev).style.backgroundColor = "white";      
-    }, (i+1) * 5000-200);
+      document.getElementById("i" + i).style.backgroundColor = "#84F37A";
+      if (prev != i) {
+        document.getElementById("i" + prev).style.border = "2px solid #D1D0CD";
+        document.getElementById("i" + prev).style.backgroundColor = "white";      
+      }   
+    }, (i+1) * N*750-200);
     
   }
 
