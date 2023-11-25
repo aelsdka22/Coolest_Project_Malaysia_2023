@@ -307,7 +307,7 @@ function insertion_sort(list):
         document.getElementById("value2").innerHTML = "Value 2: " + myArray[j];
 
         if (myArray[j] < myArray[k]) {
-          document.getElementById("concept").innerHTML = "Since Value 1 > Value 2, we swap them, so the smaller moves to the front.";
+          document.getElementById("concept").innerHTML = "Since Value 2 < Value 1, we swap them, so the smaller moves to the front.";
           setTimeout(function () {
             getJ.classList.add("enlarge");
             getK.classList.add("enlarge");
@@ -331,7 +331,7 @@ function insertion_sort(list):
           document.getElementById("i" + j).style.backgroundColor = "white";
           document.getElementById("i" + k).style.backgroundColor = "white";
         }, count2 * 20 + 400);
-      }, (count) * 2000);
+      }, (count) * N*400);
     }
   }
 
