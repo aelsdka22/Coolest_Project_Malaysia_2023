@@ -5,7 +5,7 @@
   let N = parseInt(prompt("Enter array size: "));
   let myArray = [];
   while (true) {
-    let myArray = prompt("Enter a list of numbers (separated by space) \nexample: 1 2 3 4 5 6").split(" ");
+    myArray = prompt("Enter a list of numbers (separated by space) \nexample: 1 2 3 4 5 6").split(" ");
     let ok = true;
     for (let a = 0; a < myArray.length - 1; a++) {
     	if (myArray[a] > myArray[a+1]) {
