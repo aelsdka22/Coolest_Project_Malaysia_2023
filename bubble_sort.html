@@ -329,9 +329,12 @@ END FOR
           document.getElementById("i" + k).style.backgroundColor = "white";
         }, count2 * 20 + 400);
         count2++;
-      }, (count) * 2000);
+      }, (count) * N*200);
       count++;
     }
+    setTimeout(function() {
+        document.getElementById("i" + (N-i-1)).style.backgroundColor = "#b0f781";
+    }, count * N * 200 - 20);
   }
 
 </script>
