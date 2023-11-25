@@ -3,7 +3,14 @@
 
 <script>
   let N = parseInt(prompt("Enter array size: "));
-  let myArray = prompt("Enter a list of numbers (separated by space) \nexample: 1 2 3 4 5 6").split(" ");
+  while (true) {
+    let myArray = prompt("Enter a list of numbers (separated by space) \nexample: 1 2 3 4 5 6").split(" ");
+    let sorted = myArray;
+    sorted.sort();
+    if (myArray == sorted) 
+	break;
+    alert("Array has to be SORTED");
+  }
   let target = parseInt(prompt("Enter the target: "));
   for (let i = 0; i < myArray.length; i++)
     myArray[i] = parseInt(myArray[i]);
