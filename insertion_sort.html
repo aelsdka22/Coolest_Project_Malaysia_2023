@@ -3,7 +3,7 @@
 
 <script>
   let N = parseInt(prompt("Enter array size: "));
-  let myArray = prompt("Enter a list of numbers (without separated by commas): ").split(" ");
+  let myArray = prompt("Enter a list of numbers (separated by space) \nexample: 3 5 4 2 6 1").split(" ");
   // 1 7 2 4 8 9 5 3 6
   for (let i = 0; i < myArray.length; i++)
     myArray[i] = parseInt(myArray[i]);
