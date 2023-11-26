@@ -9,13 +9,14 @@
     let ok = true;
     for (let a = 0; a < myArray.length - 1; a++) {
     	if (myArray[a] > myArray[a+1]) {
+	    alert(myArray[a], myArray[a+1]);
 	    ok = false;
 	    break;
 	}
     }
     if (ok == true) 
 	break;
-    alert(myArray);
+    alert(Array has to be SORTED.);
   }
   let target = parseInt(prompt("Enter the target: "));
   for (let i = 0; i < myArray.length; i++)
